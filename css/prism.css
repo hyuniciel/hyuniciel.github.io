@@ -1,0 +1,263 @@
+/* =====================================================
+   Prism.js Theme - Adaptive Dark/Light
+   Based on GitHub's code theme
+   ===================================================== */
+
+/* Dark Theme Tokens (Default) */
+:root {
+  --code-bg: #161b22;
+  --code-text: #e6edf3;
+  --code-comment: #8b949e;
+  --code-punctuation: #8b949e;
+  --code-property: #79c0ff;
+  --code-string: #a5d6ff;
+  --code-operator: #ff7b72;
+  --code-keyword: #ff7b72;
+  --code-function: #d2a8ff;
+  --code-variable: #ffa657;
+  --code-number: #79c0ff;
+  --code-class: #7ee787;
+  --code-regex: #a5d6ff;
+  --code-important: #ff7b72;
+  --code-selection: rgba(56, 139, 253, 0.4);
+  --code-line-highlight: rgba(56, 139, 253, 0.15);
+}
+
+/* Light Theme Tokens */
+[data-theme="light"] {
+  --code-bg: #f6f8fa;
+  --code-text: #24292f;
+  --code-comment: #6e7781;
+  --code-punctuation: #6e7781;
+  --code-property: #0550ae;
+  --code-string: #0a3069;
+  --code-operator: #cf222e;
+  --code-keyword: #cf222e;
+  --code-function: #8250df;
+  --code-variable: #953800;
+  --code-number: #0550ae;
+  --code-class: #116329;
+  --code-regex: #0a3069;
+  --code-important: #cf222e;
+  --code-selection: rgba(5, 80, 174, 0.2);
+  --code-line-highlight: rgba(5, 80, 174, 0.1);
+}
+
+/* =====================================================
+   Code Block Styling
+   ===================================================== */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: var(--code-text);
+  background: none;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', Monaco, monospace;
+  font-size: 0.875rem;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.6;
+  tab-size: 2;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  overflow: auto;
+  border-radius: 8px;
+  background: var(--code-bg);
+  border: 1px solid var(--border-color, #30363d);
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  background: var(--code-bg);
+  white-space: normal;
+}
+
+/* =====================================================
+   Token Colors
+   ===================================================== */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--code-comment);
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: var(--code-punctuation);
+}
+
+.token.namespace {
+  opacity: 0.8;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  color: var(--code-number);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin {
+  color: var(--code-string);
+}
+
+.token.inserted {
+  color: var(--code-class);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: var(--code-operator);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: var(--code-keyword);
+}
+
+.token.function,
+.token.class-name {
+  color: var(--code-function);
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: var(--code-variable);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.deleted {
+  color: var(--code-important);
+}
+
+/* =====================================================
+   Selection
+   ===================================================== */
+code[class*="language-"]::selection,
+pre[class*="language-"]::selection,
+code[class*="language-"] *::selection,
+pre[class*="language-"] *::selection {
+  background: var(--code-selection);
+  text-shadow: none;
+}
+
+/* =====================================================
+   Line Highlighting (optional)
+   ===================================================== */
+.line-highlight {
+  background: var(--code-line-highlight);
+  display: block;
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
+}
+
+/* =====================================================
+   Line Numbers (optional)
+   ===================================================== */
+pre[class*="language-"].line-numbers {
+  position: relative;
+  padding-left: 3.5rem;
+  counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+  position: relative;
+  white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 1.25rem;
+  left: 0;
+  width: 3rem;
+  letter-spacing: -1px;
+  border-right: 1px solid var(--border-color, #30363d);
+  user-select: none;
+}
+
+.line-numbers-rows > span {
+  display: block;
+  counter-increment: linenumber;
+}
+
+.line-numbers-rows > span::before {
+  content: counter(linenumber);
+  color: var(--code-comment);
+  display: block;
+  padding-right: 0.8rem;
+  text-align: right;
+}
+
+/* =====================================================
+   Language Badge
+   ===================================================== */
+pre[class*="language-"]::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--code-comment);
+  background: var(--code-bg);
+  border-radius: 0 0 4px 4px;
+  border: 1px solid var(--border-color, #30363d);
+  border-top: none;
+}
+
+/* =====================================================
+   Scrollbar Styling
+   ===================================================== */
+pre[class*="language-"]::-webkit-scrollbar {
+  height: 8px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb {
+  background: var(--code-comment);
+  border-radius: 4px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+  background: var(--code-punctuation);
+}
+
